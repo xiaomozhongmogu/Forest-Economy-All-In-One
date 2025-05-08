@@ -1,0 +1,8 @@
+edu/scau/forestproject/pojo/Result.class
+edu/scau/forestproject/service/UserService.class
+edu/scau/forestproject/mapper/UserMapper.class
+edu/scau/forestproject/ForestProjectApplication.class
+edu/scau/forestproject/pojo/User.class
+edu/scau/forestproject/controller/LoginController.class
+edu/scau/forestproject/service/impl/UserServiceImpl.class
+edu/scau/forestproject/pojo/LoginInfo.class

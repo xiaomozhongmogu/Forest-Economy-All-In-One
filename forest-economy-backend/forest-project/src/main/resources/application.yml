@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: forest-project
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/forest-economy
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 2915227089
+
+mybatis:
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
