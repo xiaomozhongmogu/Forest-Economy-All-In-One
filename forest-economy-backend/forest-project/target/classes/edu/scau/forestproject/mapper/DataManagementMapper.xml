@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.scau.forestproject.mapper.DataManagementMapper">
+    <insert id="insertPlot">
+        INSERT into ProductionPlot (id, coordinate, user_id, plotName)
+        values (
+                   #{id},
+                   ST_GeomFromGeoJSON(#{coordinate}),
+                   (SELECT id FROM User WHERE username = #{username}),
+                   #{plotName}
+               )
+    </insert>
+
+
+    <update id="updateUserInfo">
+        UPDATE User
+             <set>
+                <if test="username != null">
+                username = #{username},
+                </if>
+                <if test="phoneNumber != null">
+                phoneNumber = #{phoneNumber},
+                </if>
+                <if test="residenceAddress != null">
+                residenceAddress = #{residenceAddress},
+                </if>
+             </set>
+           WHERE id = #{id};
+    </update>
+
+
+    <update id="updatePlotInfo">
+        UPDATE ProductionPlot
+        left join User on ProductionPlot.user_id = User.id
+        left join ProductionPlot_has_Crop on ProductionPlot.id = ProductionPlot_has_Crop.ProductionPlot_id
+        left join Crop on ProductionPlot_has_Crop.Crop_id = Crop.id
+            <set>
+                <if test="plotName != null">
+                    ProductionPlot.plotName = #{plotName},
+                </if>
+                <if test="cropName != null">
+                    ProductionPlot_has_Crop.Crop_id = (SELECT id FROM Crop WHERE cropName = #{cropName}),
+                </if>
+                <if test="coordinate != null">
+                    ProductionPlot.coordinate = ST_GeomFromGeoJSON(#{coordinate}),
+                </if>
+            </set>
+        WHERE ProductionPlot.id = #{id};
+    </update>
+
+
+    <select id="getUserList" resultType="edu.scau.forestproject.pojo.User">
+        select User.*, Crop.cropName
+        from User
+        left join ProductionPlot on User.id = ProductionPlot.user_id
+        left join ProductionPlot_has_Crop on ProductionPlot.id = ProductionPlot_has_Crop.ProductionPlot_id
+        left join Crop on ProductionPlot_has_Crop.Crop_id = Crop.id
+        <where>
+            <if test="username != null and username != ''">
+                User.username like concat('%',#{username},'%')
+            </if>
+            <if test="phoneNumber != null and phoneNumber != ''">
+                and User.phoneNumber like concat('%',#{phoneNumber},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getPlotList" resultType="edu.scau.forestproject.pojo.ProductionPlot">
+        select ProductionPlot.id,
+               ProductionPlot.plotName,
+               ST_AsGeoJSON(ProductionPlot.coordinate) as coordinate,
+               User.username, Crop.cropName
+        from ProductionPlot
+        left join User on ProductionPlot.user_id = User.id
+        left join ProductionPlot_has_Crop on ProductionPlot.id = ProductionPlot_has_Crop.ProductionPlot_id
+        left join Crop on ProductionPlot_has_Crop.Crop_id = Crop.id
+        <where>
+            <if test="id != null and id != ''">
+                ProductionPlot.id = #{id}
+            </if>
+            <if test="username != null and username != ''">
+                and User. username like concat('%',#{username},'%')
+            </if>
+        </where>
+    </select>
+</mapper>
