@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.time.LocalDate;
+
 @Mapper
 public interface UserMapper {
 
@@ -16,6 +18,6 @@ public interface UserMapper {
     @Delete("DELETE FROM User WHERE id = #{id}")
     void deleteByID(Integer id);
 
-    @Insert("INSERT INTO User (username, phoneNumber, password) VALUES (#{username}, #{phoneNumber}, #{password})")
-    void addUser(User user);
+    @Insert("INSERT INTO User (username, phoneNumber, password, registrationDate) VALUES (#{user.username}, #{user.phoneNumber}, #{user.password}, #{registrationDate})")
+    void addUser(User user, LocalDate registrationDate);
 }

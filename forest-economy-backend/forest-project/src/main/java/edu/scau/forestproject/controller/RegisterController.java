@@ -1,6 +1,5 @@
 package edu.scau.forestproject.controller;
 
-import edu.scau.forestproject.pojo.LoginInfo;
 import edu.scau.forestproject.pojo.Result;
 import edu.scau.forestproject.pojo.User;
 import edu.scau.forestproject.service.UserService;

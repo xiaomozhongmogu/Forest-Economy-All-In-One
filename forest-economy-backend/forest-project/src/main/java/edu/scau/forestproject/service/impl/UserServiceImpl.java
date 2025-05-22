@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,6 +44,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(User user) {
-        userMapper.addUser(user);
+        LocalDate registrationDate = LocalDate.now();
+        userMapper.addUser(user, registrationDate);
     }
 }
