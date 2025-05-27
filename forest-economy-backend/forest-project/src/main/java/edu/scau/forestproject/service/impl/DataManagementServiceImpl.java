@@ -46,6 +46,7 @@ public class DataManagementServiceImpl implements DataManagementService {
 
     @Override
     public void updateUser(User user) {
+        log.info("开始更新用户");
         dataManagementMapper.updateUserInfo(user);
     }
 
@@ -75,7 +76,9 @@ public class DataManagementServiceImpl implements DataManagementService {
 
     @Override
     public void delete(Integer id) {
+        log.info("删除地块id = {} 的 关系表中的数据", id);
+        dataManagementMapper.deleteplot_has_crop(id);
+        log.info("删除 id = {} 的地块", id);
         dataManagementMapper.deleteById(id);
     }
-
 }

@@ -3,7 +3,7 @@ import { useUserStore } from '@/stores/userStore';
 
 const request = axios.create({
   baseURL: '/api',
-  // baseURL: 'http://localhost:8080',
+  //baseURL: 'http://localhost:8080',
   timeout: 1000,
 })
 

@@ -22,6 +22,9 @@ public interface DataManagementMapper {
 
     void updatePlotInfo(ProductionPlot productionPlot);
 
+    @Delete("DELETE FROM productionplot_has_crop where ProductionPlot_id = #{id}")
+    void deleteplot_has_crop(Integer id);
+
     @Delete("DELETE FROM ProductionPlot where id = #{id}")
     void deleteById(Integer id);
 }

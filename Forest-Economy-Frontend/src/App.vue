@@ -39,4 +39,11 @@ body {
 .app-container.sidebar-minimized el-main {
   width: calc(100% - 60px);
 }
+/* 定义 CSS 变量，严格遵循您原有的配色 */
+:root {
+  --primary-color: #556B2F; /* 主色调：墨绿 */
+  --light-bg-color: #FDFBF7; /* 浅背景色 */
+  --border-color-light: #E8E0D0; /* 浅边框色 */
+  --text-color-dark: #2B3F2B; /* 深文本色 */
+}
 </style>

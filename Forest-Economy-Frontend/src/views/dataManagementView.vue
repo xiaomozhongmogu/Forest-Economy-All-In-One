@@ -28,7 +28,7 @@
                 size="large"
                 class="header_button" :class="{ 'selected': selectedFunction === '3' }"
                 @click="() => handleHeaderButtonClick('3')"
-              >经济作物信息</el-button>
+              >作物信息</el-button>
             </div>
           </el-col>
           <el-col :span="6">
@@ -46,7 +46,7 @@
         <FarmerInfo v-if="selectedFunction === '1'" />
         <FarmLandInfo v-if="selectedFunction === '2'"/>
         <CropInfo v-if="selectedFunction === '3'"/>
-        <div v-if="selectedFunction === '4'">市场信息内容区域</div>
+        <MarketInfo v-if="selectedFunction === '4'"/>
       </el-main>
       <el-footer class="footer">© 2024 林下经济数据管理系统</el-footer>
     </el-container>
@@ -58,7 +58,7 @@ import { ref } from 'vue';
 import FarmerInfo from '@/views/dataManagementLayout/farmerInfo.vue';
 import FarmLandInfo from '@/views/dataManagementLayout/farmLandInfo.vue';
 import CropInfo from '@/views/dataManagementLayout/cropInfo.vue';
-
+import MarketInfo from './dataManagementLayout/marketInfo.vue';
 
 const selectedFunction = ref('1');
 
@@ -75,16 +75,17 @@ const handleHeaderButtonClick = (index) => {
 }
 .title {
   color: #556B2F;
-  font-size: large;
+  font-size: 40px;
   margin-bottom: 20px;
 }
 .header_row_box {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 .header_button_box {
-  flex: 1;
-  margin: 0 5px;
+  flex: 0 0 auto;
+  justify-content: center;
+  margin: 0 2px;
 }
 .data_management_content {
   padding: 20px;
@@ -99,7 +100,9 @@ const handleHeaderButtonClick = (index) => {
   border-radius: 10px;
   box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.15);
   padding: 20px;
-
+  display: flex;
+  flex-direction: column; /* 垂直排列子元素 */
+  align-items: center;   /* 水平居中对齐子元素 */
 }
 
 .header_button {
