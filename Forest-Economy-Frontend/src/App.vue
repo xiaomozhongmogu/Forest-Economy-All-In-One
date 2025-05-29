@@ -41,9 +41,12 @@ body {
 }
 /* 定义 CSS 变量，严格遵循您原有的配色 */
 :root {
-  --primary-color: #556B2F; /* 主色调：墨绿 */
-  --light-bg-color: #FDFBF7; /* 浅背景色 */
-  --border-color-light: #E8E0D0; /* 浅边框色 */
   --text-color-dark: #2B3F2B; /* 深文本色 */
+  --primary-green: #556B2F;
+  --light-green: #6C8145;
+  --border-color: #E8E0D0;
+  --background-color-page: #FDFBF7;
+  --background-color-card: #ffffff;
+  --text-color-tip: #999;
 }
 </style>

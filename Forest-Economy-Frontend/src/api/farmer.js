@@ -15,7 +15,7 @@ import request from "@/utils/request";
 
 
 export const fetchFamersApi = async (params) => {
-  console.log('fetchFamersApi 被调用了，参数是:', params); 
+  console.log('fetchFamersApi 被调用了，参数是:', params);
   try {
     const response = await request({
       url: '/data_management/user',
@@ -74,6 +74,9 @@ export const editFamerApi = async (data) => {
     throw error;
   }
 };
+
+
+
 
 
 
