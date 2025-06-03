@@ -1,4 +1,4 @@
-package edu.scau.forestproject.pojo;
+package edu.scau.forestproject.pojo.plot;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

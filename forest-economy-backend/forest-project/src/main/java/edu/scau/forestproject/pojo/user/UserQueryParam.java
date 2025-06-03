@@ -1,4 +1,4 @@
-package edu.scau.forestproject.pojo;
+package edu.scau.forestproject.pojo.user;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;

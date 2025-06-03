@@ -1,7 +1,7 @@
 package edu.scau.forestproject.service;
 
 import edu.scau.forestproject.pojo.LoginInfo;
-import edu.scau.forestproject.pojo.User;
+import edu.scau.forestproject.pojo.user.User;
 
 public interface UserService {
 

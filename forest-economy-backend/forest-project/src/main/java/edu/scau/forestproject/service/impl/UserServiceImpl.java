@@ -2,7 +2,7 @@ package edu.scau.forestproject.service.impl;
 
 import edu.scau.forestproject.mapper.UserMapper;
 import edu.scau.forestproject.pojo.LoginInfo;
-import edu.scau.forestproject.pojo.User;
+import edu.scau.forestproject.pojo.user.User;
 import edu.scau.forestproject.service.UserService;
 import edu.scau.forestproject.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;

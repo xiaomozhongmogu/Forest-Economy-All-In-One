@@ -1,6 +1,11 @@
 package edu.scau.forestproject.controller;
 
 import edu.scau.forestproject.pojo.*;
+import edu.scau.forestproject.pojo.crop.Crop;
+import edu.scau.forestproject.pojo.plot.PlotQueryParam;
+import edu.scau.forestproject.pojo.plot.ProductionPlot;
+import edu.scau.forestproject.pojo.user.User;
+import edu.scau.forestproject.pojo.user.UserQueryParam;
 import edu.scau.forestproject.service.DataManagementService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,5 +66,12 @@ public class DataManagementController {
         log.info("Plot info:{}", productionPlot);
         dataManagementService.updatePlot(productionPlot);
         return Result.success();
+    }
+
+    @GetMapping("/crop")
+    public Result searchPlot(String cropName, Integer page, Integer pageSize) {
+        log.info("Crop info:{}", cropName);
+        PageResult<Crop> cropPageResult = dataManagementService.cropPage(cropName, page, pageSize);
+        return Result.success(cropPageResult);
     }
 }

@@ -1,6 +1,6 @@
 package edu.scau.forestproject.mapper;
 
-import edu.scau.forestproject.pojo.User;
+import edu.scau.forestproject.pojo.user.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

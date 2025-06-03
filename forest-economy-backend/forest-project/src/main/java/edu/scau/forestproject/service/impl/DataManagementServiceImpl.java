@@ -4,6 +4,11 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import edu.scau.forestproject.mapper.DataManagementMapper;
 import edu.scau.forestproject.pojo.*;
+import edu.scau.forestproject.pojo.crop.Crop;
+import edu.scau.forestproject.pojo.plot.PlotQueryParam;
+import edu.scau.forestproject.pojo.plot.ProductionPlot;
+import edu.scau.forestproject.pojo.user.User;
+import edu.scau.forestproject.pojo.user.UserQueryParam;
 import edu.scau.forestproject.service.DataManagementService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,5 +85,20 @@ public class DataManagementServiceImpl implements DataManagementService {
         dataManagementMapper.deleteplot_has_crop(id);
         log.info("删除 id = {} 的地块", id);
         dataManagementMapper.deleteById(id);
+    }
+
+
+    //Crop
+    @Override
+    public PageResult<Crop> cropPage(String cropName, Integer page, Integer pageSize) {
+        log.info("开始分页，页码:{}, 每页数量:{}", page, pageSize);
+        PageHelper.startPage(page, pageSize);
+        List<Crop> cropList = dataManagementMapper.getCropList(cropName);
+        log.info("获取的信息{}", cropList);
+        PageInfo<Crop> pageInfo = new PageInfo<>(cropList);
+        PageResult<Crop> pageResult = new PageResult<>();
+        pageResult.setTotal(pageInfo.getTotal());
+        pageResult.setRows(cropList);
+        return pageResult;
     }
 }

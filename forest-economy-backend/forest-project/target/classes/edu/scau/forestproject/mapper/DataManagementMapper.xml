@@ -51,7 +51,7 @@
     </update>
 
 
-    <select id="getUserList" resultType="edu.scau.forestproject.pojo.User">
+    <select id="getUserList" resultType="edu.scau.forestproject.pojo.user.User">
         select User.*, Crop.cropName
         from User
         left join ProductionPlot on User.id = ProductionPlot.user_id
@@ -67,7 +67,7 @@
         </where>
     </select>
 
-    <select id="getPlotList" resultType="edu.scau.forestproject.pojo.ProductionPlot">
+    <select id="getPlotList" resultType="edu.scau.forestproject.pojo.plot.ProductionPlot">
         select ProductionPlot.id,
                ProductionPlot.plotName,
                ST_AsGeoJSON(ProductionPlot.coordinate) as coordinate,
@@ -85,4 +85,14 @@
             </if>
         </where>
     </select>
+    <select id="getCropList" resultType="edu.scau.forestproject.pojo.crop.Crop">
+        select *
+        from Crop
+        <where>
+            <if test="cropName != null and cropName != ''">
+                Crop.cropName = #{cropName}
+            </if>
+        </where>
+    </select>
+
 </mapper>
